@@ -24,7 +24,6 @@ class PostSerializer(serializers.ModelSerializer):
             )
         return value
 
-
     class Meta:
         model = Post
         fields = [
