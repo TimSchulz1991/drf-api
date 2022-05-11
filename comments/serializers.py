@@ -13,8 +13,12 @@ class CommentSerializer(serializers.ModelSerializer):
         return request.user == obj.owner
 
     class Meta:
-        model = Post
+        model = Comment
         fields = [
             'id', 'owner', 'post', 'created_at', 'updated_at', 'content',
             'is_owner', 'profile_id', 'profile_image'
         ]
+
+
+class CommentDetailSerializer(CommentSerializer):
+    post = serializers.ReadOnlyField(source='post.id')
