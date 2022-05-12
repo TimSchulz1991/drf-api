@@ -14,6 +14,7 @@ class Like(models.Model):
     class Meta:
         ordering = ['-created_at']
         unique_together = ['owner', 'post']
+        # https://docs.djangoproject.com/en/3.2/ref/models/options/#unique-together
 
     def __str__(self):
         return f'{self.owner} {self.post}'
