@@ -91,7 +91,7 @@ REST_FRAMEWORK = {
 # to render to JSON in Production
 if 'DEV' not in os.environ:
     REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
-        'restframework.renderers.JSONRenderer'
+        'rest_framework.renderers.JSONRenderer'
     ]
 
 REST_USE_JWT = True
