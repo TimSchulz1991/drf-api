@@ -73,8 +73,21 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication'
         if 'DEV' in os.environ
         else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
-    )]
+    )],
+    # Pagination
+    'DEFAULT_PAGINATION_CLASS':
+        'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
+    # https://docs.python.org/3/library/time.html#time.strftime
+    # https://www.django-rest-framework.org/api-guide/settings/#date-and-time-formatting
+    'DATETIME_FORMAT': '%d %b %Y'
 }
+
+# to render to JSON in Production
+if 'DEV' not in os.environ:
+    REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
+        'restframework.renderers.JSONRenderer'
+    ]
 
 REST_USE_JWT = True
 
